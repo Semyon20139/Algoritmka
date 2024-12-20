@@ -1,0 +1,175 @@
+<html lang="ru-RU" data-react-helmet="lang"><head><meta http-equiv="origin-trial" content="A/kargTFyk8MR5ueravczef/wIlTkbVk1qXQesp39nV+xNECPdLBVeYffxrM8TmZT6RArWGQVCJ0LRivD7glcAUAAACQeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZS5jb206NDQzIiwiZmVhdHVyZSI6IkRpc2FibGVUaGlyZFBhcnR5U3RvcmFnZVBhcnRpdGlvbmluZzIiLCJleHBpcnkiOjE3NDIzNDIzOTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9">
+    <script type="text/javascript" async="" charset="utf-8" src="https://www.gstatic.com/recaptcha/releases/zIriijn3uj5Vpknvt_LnfNbF/recaptcha__ru.js" crossorigin="anonymous" integrity="sha384-AfysQrWwBsCjkij0zncdqwrYxw/3BMXMxVnEJylzl85gZM9+XqlZ6OrvW4ys/onO"></script><script type="module" crossorigin="" src="/singlepage/root/assets/js/polyfills.DoDTa2WXkoyxBML.js"></script>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#000000">
+    <meta name="google" content="notranslate">
+    <title>Вход в Алгоритмику</title>
+    <meta name="csrf-param" content="_csrf-frontend">
+<meta name="csrf-token" content="-CNHxCGD1FpjrgA-JE7aq5l332Bw3a-BSLFNJrr1yGvKFSaVVfXjIDHPZA1OeaPNyQ2FCUKcmdMN-WB0_ruZNA==">
+
+<script>window.timeLoadStart = new Date().getTime();
+window.isSpaNoReload = true;
+window.isSpaPreload = true;</script>    
+    <script>
+      var path = window.location.pathname;
+
+      window.dataLayer = window.dataLayer || [];
+
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+
+      gtag('js', new Date());
+      window.addEventListener(
+        'submit',
+        function () {
+          dataLayer.push({ event: 'form_submit' });
+        },
+        true,
+      );
+      /* End Google Tag Manager */
+    </script>
+     
+<script src="/singlepage/root/sentry/7.108.0/bundle.tracing.min.js"></script>
+<script>
+function initSentry(){
+  const eventLimiter = {};
+  const THROTTLING_TIMEOUT_SECONDS = 30 * 1000;
+
+  function throttleEvent (event, hint) {
+    const exception = hint && hint.originalException;
+
+    if (exception === null || exception === undefined) {
+      return event;
+    }
+
+    const message =
+      typeof exception === 'string' ? exception : exception.message;
+
+    if (message in eventLimiter) {
+      return null;
+    }
+
+    eventLimiter[message] = true;
+
+    setTimeout(
+      function(){
+        delete eventLimiter[message];
+      },
+      THROTTLING_TIMEOUT_SECONDS,
+    );
+
+    return event;
+  }
+
+  Sentry.init({
+    integrations: [Sentry.browserTracingIntegration()],
+    tracesSampleRate: 0.1,
+    beforeSend: function(event, hint) {
+      if (!event.extra) event.extra = {};
+      return throttleEvent(event, hint);
+    },
+    denyUrls: [
+      // Facebook flakiness
+      /graph\.facebook\.com/i,
+      // Facebook blocked
+      /connect\.facebook\.net\/en_US\/all\.js/i,
+      // Woopra flakiness
+      /eatdifferent\.com\.woopra-ns\.com/i,
+      /static\.woopra\.com\/js\/woopra\.js/i,
+      // Chrome extensions
+      /extensions\//i,
+      /^chrome:\/\//i,
+      // Other plugins
+      /127\.0\.0\.1:4001\/isrunning/i, // Cacaoweb
+      /webappstoolbarba\.texthelp\.com\//i,
+      /metrics\.itunes\.apple\.com\.edgesuite\.net\//i,
+    ],
+    ignoreErrors: [
+      // Random plugins/extensions
+      'top.GLOBALS',
+      // See: http://blog.errorception.com/2012/03/tale-of-unfindable-js-error.html
+      'originalCreateNotification',
+      'canvas.contentDocument',
+      'MyApp_RemoveAllHighlights',
+      'http://tt.epicplay.com',
+      "Can't find variable: ZiteReader",
+      'jigsaw is not defined',
+      'ComboSearch is not defined',
+      'http://loading.retry.widdit.com/',
+      'atomicFindClose',
+      // Facebook borked
+      'fb_xd_fragment',
+      // ISP "optimizing" proxy - `Cache-Control: no-transform` seems to
+      // reduce this. (thanks @acdha)
+      // See http://stackoverflow.com/questions/4113268
+      'bmi_SafeAddOnload',
+      'EBCallBackMessageReceived',
+      // See http://toolbar.conduit.com/Developer/HtmlAndGadget/Methods/JSInjection.aspx
+      'conduitPage',
+      // Videoplatform
+      'Bridge Channel send: no opened channel',
+      'Constraint could not be satisfied:',
+      'Could not start audio source',
+      'Could not start video source',
+      'Failed to fetch',
+      'Feature discovery error',
+      'Focus error, retry after',
+      'No opened channel',
+      'no peer media info available for',
+      'Not connected',
+      'NotSupportedError:',
+      'Ping timeout',
+      'Requested device(s) was/were not found:',
+      'Strophe:',
+      'The timeout for the confirmation about leaving the room expired',
+      'User canceled screen sharing prompt',
+      'User denied permission to use device(s):',
+      'Websocket error',
+      'You are already in the room!',
+      // scratch
+      /^Error in Scratch GUI:/,
+      "Cannot read property 'currentCostume' of undefined",
+      "Cannot set property 'value' of null",
+      'Tried to glow stack on block that does not exist.',
+      'DataCloneError: The object could not be cloned.',
+      "Failed to execute 'getImageData' on 'CanvasRenderingContext2D'",
+      "Cannot read property 'workspace' of null",
+      "Cannot read property 'getCostumes' of undefined",
+      "Cannot read property 'dragBlock' of null",
+      "Failed to execute 'shaderSource' on 'WebGLRenderingContext': parameter 1 is not of type 'WebGLShader'.",
+      "Cannot read property 'blockDragSurface_' of null",
+      'this.finalPath.add is not a function',
+    ],
+
+    // here will be pasted actual "dsn" from Jenkins Credentials —
+    // it must replace template string "CORRECT_DSN_FOR_GEO_INSTANCE"
+    // with correct DSN for certain instance, i.e. for GEO-RU instance:
+    // "CORRECT_DSN_FOR_GEO_INSTANCE" >> "https://8fc299642da8bf575c646243c166e768@sentry.algoritmika.su/8"
+    // @see https://algoritmika.atlassian.net/browse/PLATFORM-6877
+    dsn: 'https://8fc299642da8bf575c646243c166e768@sentry.algoritmika.su/8',
+
+    maxBreadcrumbs: 15,
+    release: 'algoritmika-singlepage@2024.12.12-175202',
+    sampleRate: 0.5,
+  });
+}
+initSentry();
+</script>
+
+
+    <script type="module" crossorigin="" src="/singlepage/root/assets/js/index.Chb2SGumm-ZEDZB.js"></script>
+    <link rel="modulepreload" crossorigin="" href="/singlepage/root/assets/js/DqMhhfTAyGQ8Qe4.js">
+    <link rel="stylesheet" crossorigin="" href="/singlepage/root/assets/index-CuDAD2jy.css">
+  <style data-styled="active" data-styled-version="6.1.8"></style><style data-styled="active" data-styled-version="6.1.8"></style><link rel="modulepreload" as="script" crossorigin="" href="/singlepage/root/assets/js/DPeuDwowaV50E7i.js"><link rel="modulepreload" as="script" crossorigin="" href="/singlepage/root/assets/js/DOpsWI7FN5oCtiz.js"><link rel="modulepreload" as="script" crossorigin="" href="/singlepage/root/assets/js/Be4CZr3JjG0VERa.js"><link rel="modulepreload" as="script" crossorigin="" href="/singlepage/root/assets/js/CIAV4W9osX4whBl.js"><link rel="modulepreload" as="script" crossorigin="" href="/singlepage/root/assets/js/Cz53mlfcEKL4QKM.js"><link rel="shortcut icon" href="/singlepage/root/favicon.svg" data-react-helmet="true"></head>
+
+  <body class="notranslate">
+        <noscript> You need to enable JavaScript to run this app. </noscript>
+
+    <div id="root"><div class="sc-rPMDU dHwMpg"><div class="sc-rQNMv leQnxN"><div class="sc-hWSTwZ hHOnTu"><img src="/singlepage/root/assets/logoRu-DEW6BJ7J.svg" class="sc-fJXYbi cwWmlk"></div><div class="sc-cSrxju dwbllJ"><form class="sc-SMxNB ckrFmj"><div><div><div class="grecaptcha-badge" data-style="bottomright" style="width: 256px; height: 60px; display: block; transition: right 0.3s; position: fixed; bottom: 14px; right: -186px; box-shadow: gray 0px 0px 5px; border-radius: 2px; overflow: hidden;"><div class="grecaptcha-logo"><iframe title="reCAPTCHA" width="256" height="60" role="presentation" name="a-4j0qm9n898rm" frameborder="0" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox allow-storage-access-by-user-activation" src="https://www.google.com/recaptcha/api2/anchor?ar=1&amp;k=6LebZTAiAAAAAJkPjYvV_K_qjSTAKwJq6Y2A-YNi&amp;co=aHR0cHM6Ly9sZWFybi5hbGdvcml0bWlrYS5vcmc6NDQz&amp;hl=ru&amp;type=image&amp;v=zIriijn3uj5Vpknvt_LnfNbF&amp;theme=light&amp;size=invisible&amp;badge=bottomright&amp;cb=jalnauvxwbc8"></iframe></div><div class="grecaptcha-error"></div><textarea id="g-recaptcha-response" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea></div><iframe style="display: none;"></iframe></div></div><h1 class="sc-guDLey enJLPG sc-iPFWtD dNejcu"><span>Вход для учеников</span></h1><div class="sc-jNksTS jCYjRY"><div class="sc-gkTIco fxZSyi"><span class="sc-eTNRI sc-hiTDLB iNLQDd bNLdkX">Логин</span><input data-qa-id="login-input" class="sc-ppzwM daAFAM" value=""></div></div><button data-qa-id="submit-auth-button" type="submit" class="sc-brSamD kyIYDv"><span class="sc-ktwOfi kngPQA">Далее</span></button><a data-qa-id="sing-in-as-teacher-link" href="/site/lms" class="sc-gopctv fdnzjq"><span>Войти как учитель</span></a></form></div><div class="sc-ejEEBc iwaHgp"><div class="sc-bsJwXR gJVgCy"><div class="sc-fsFrzz cIbHfH"><div class="sc-gSXJRe dUtaWB"></div><div class="sc-fUzjWc fpBHXH"></div><div class="sc-hJphhG ctrcGF"></div><div class="sc-gKHflt khglrm"></div><div class="sc-CrZHp kpugk"></div><div class="sc-fNOJtn ccSAfc" style="transform: translate(4.97963px, 2.11238px);"></div><div class="sc-fzoWTu cOkczi" style="transform: translate(19.9185px, 2.11238px);"></div><div class="sc-eAGUXh kHvmwx" style="transform: translate(-9.95927px, -2.11238px);"></div><div class="sc-gwhsLA iUTABq"></div><div class="sc-hhxwqX iJlZgK"></div><div class="sc-dzXNMW cUcOQj"></div><div class="sc-jxmmXf hTROoN"></div><div class="sc-hXOTHz cxfraa" style="transform: translate(9.95927px, -2.11238px);"></div><div class="sc-emhixo eWlUXS" style="transform: translate(-14.9389px, 2.11238px);"></div><div class="sc-bZEumQ iqKdMU"></div></div></div></div></div></div><div><script type="text/javascript" async="" src="https://mc.yandex.ru/metrika/tag.js"></script></div></div>
+
+      
+
+<div id="veepn-breach-alert"></div><style>@font-face{font-family:FigtreeVF;src:url(chrome-extension://majdfhpaihoncoakbjgbdhglocklcgno/fonts/FigtreeVF.woff2) format("woff2 supports variations"),url(chrome-extension://majdfhpaihoncoakbjgbdhglocklcgno/fonts/FigtreeVF.woff2) format("woff2-variations");font-weight:100 1000;font-display:swap}</style><script src="https://www.google.com/recaptcha/api.js?onload=onloadcallback&amp;render=explicit" async=""></script></body></html>
